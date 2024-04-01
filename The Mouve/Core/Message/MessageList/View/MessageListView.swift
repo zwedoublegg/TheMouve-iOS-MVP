@@ -38,7 +38,7 @@ struct MessageListView: View {
                 }
             }
             .listStyle(PlainListStyle())
-            .onChange(of: selectedUser) { oldValue, newValue in
+            .onChange(of: selectedUser) { newValue in //remove "newValue in" for iOS 17+
                 showChatView = newValue != nil
             }
             .onAppear(perform: {

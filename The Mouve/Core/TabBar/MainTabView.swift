@@ -58,7 +58,7 @@ struct MainTabView: View {
                 .onAppear {selectedTab = 4 }
                 .tag(4)
         }
-        .onChange(of: selectedTab) {
+        .onChange(of: selectedTab) { newValue in //remove "newValue in" for iOS 17+
             showCreateMouveView = selectedTab == 2
         }
         .sheet(isPresented: $showCreateMouveView, onDismiss: {

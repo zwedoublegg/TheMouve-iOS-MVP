@@ -18,7 +18,7 @@ struct MouveFeedCellView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack (spacing: 4) {
                         Text(mouve.user?.username ?? "")
-                            .font(.callout)
+                            .font(Font(UIFont(name: "Didot", size: 18.0)!)) // FIXME: I'm forced unwrapped
                             .fontWeight(.semibold)
                         .foregroundColor(.cyan) //TODO: Change to App color
                         
@@ -29,7 +29,7 @@ struct MouveFeedCellView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text(mouve.mouveCaption)//Title goes here
-                        .font(.headline)
+                        .font(Font.custom("Margarette01.ttf", size: 18))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.leading)
                         .lineSpacing(0)
