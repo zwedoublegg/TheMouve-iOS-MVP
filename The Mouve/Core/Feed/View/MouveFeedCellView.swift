@@ -18,7 +18,7 @@ struct MouveFeedCellView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack (spacing: 4) {
                         Text(mouve.user?.username ?? "")
-                            .font(Font(UIFont(name: "Didot", size: 18.0)!)) // FIXME: I'm forced unwrapped
+                            .font(Font(UIFont(name: "PingFangHK-Light", size: 18.0)!)) // FIXME: I'm forced unwrapped
                             .fontWeight(.semibold)
                         .foregroundColor(.cyan) //TODO: Change to App color
                         

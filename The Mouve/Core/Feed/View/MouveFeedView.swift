@@ -9,15 +9,57 @@ import SwiftUI
 
 struct MouveFeedView: View {
     @StateObject var viewModel = FeedViewModel()
+    @State private var selectedFilter: FeedMouvesFilter = .scene
+    @Namespace var animation
+    
+    private var filterBarWidth: CGFloat {
+        let count = CGFloat(ProfileMouvesFilter.allCases.count)
+        return UIScreen.main.bounds.width / count - 20 //20 used below  to adjust for padding
+    }
 
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false){
-                ContentListHeaderView()
-                LazyVStack(alignment: .center, spacing: 4, content:  {
-                    ForEach (viewModel.mouves) { mouve in
-                        MouveFeedCellView( mouve: mouve)
+                HStack{
+                    ForEach(FeedMouvesFilter.allCases) { filter in
+                        VStack {
+                            Text(filter.title)
+                                .font(.subheadline)
+                                .fontWeight(selectedFilter == filter ? .semibold : .regular)
+                            
+                            if (selectedFilter == filter) {
+                                Rectangle()
+                                    .foregroundColor(.black)
+                                    .frame(width: filterBarWidth, height: 1)
+                                    .matchedGeometryEffect(id: "item", in: animation)
+                            } else {
+                                Rectangle()
+                                    .foregroundColor(.clear)
+                                    .frame(width: filterBarWidth, height: 1)
+                            }
+                        }
+                        .onTapGesture {
+                            withAnimation (.spring()) {
+                                selectedFilter = filter
+                            }
+                        }
                     }
+                }
+                
+                LazyVStack(alignment: .center, spacing: 4, content:  {
+                    switch selectedFilter {
+                    case .scene:
+                        ForEach (viewModel.mouves) { mouve in
+                            MouveFeedCellView( mouve: mouve)
+                                .transition(.move(edge: .leading))
+                        }
+                    case .following:
+                        ForEach(0 ... 1, id: \.self) { mouve in
+                            MouveFeedCellView(mouve: Mouve.MOCK_MOUVE)
+                                .transition(.move(edge: .trailing))
+                        }
+                    }
+                    
                 })
                 .padding(.horizontal)
             }

@@ -27,12 +27,6 @@ class FeedViewModel: ObservableObject {
             let ownerUid = mouve.ownerUid
             let mouveUser = try await UserService.fetchUser(withUid: ownerUid)
             
-            if let didotFont = UIFont(name: "Didot", size: 18.0) {
-                print("font right here")
-            } else {
-                print("font NNNNOOOOTTT right here")
-            }
-            
             mouves[i].user = mouveUser
         }
     }
