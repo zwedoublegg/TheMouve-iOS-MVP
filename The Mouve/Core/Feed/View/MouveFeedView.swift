@@ -10,6 +10,7 @@ import SwiftUI
 struct MouveFeedView: View {
     @StateObject var viewModel = FeedViewModel()
     @State private var selectedFilter: FeedMouvesFilter = .scene
+    @State private var showMouveCard = false
     @Namespace var animation
     
     private var filterBarWidth: CGFloat {
@@ -51,6 +52,12 @@ struct MouveFeedView: View {
                     case .scene:
                         ForEach (viewModel.mouves) { mouve in
                             MouveFeedCellView( mouve: mouve)
+                                .onTapGesture(perform: {
+                                    showMouveCard.toggle()
+                                })
+                                .sheet(isPresented: $showMouveCard, content: {
+                                    MouveCardView(mouve: mouve)
+                                })
                                 .transition(.move(edge: .leading))
                         }
                     case .following:

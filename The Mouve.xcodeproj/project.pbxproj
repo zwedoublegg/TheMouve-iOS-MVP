@@ -16,6 +16,9 @@
 		783E73622B80684E009A01FD /* The_MouveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E73612B80684E009A01FD /* The_MouveUITestsLaunchTests.swift */; };
 		783F17AA2BBCA9A900A08990 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17A92BBCA9A900A08990 /* String.swift */; };
 		783F17AD2BBCF4B500A08990 /* FeedMouvesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17AC2BBCF4B500A08990 /* FeedMouvesFilter.swift */; };
+		783F17AF2BBDC8F600A08990 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17AE2BBDC8F600A08990 /* Color.swift */; };
+		783F17B42BBE276E00A08990 /* MouveCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17B32BBE276E00A08990 /* MouveCardView.swift */; };
+		783F17B82BBE2E2E00A08990 /* MouveCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */; };
 		788576492BB8878300BB039F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 788576482BB8878300BB039F /* FirebaseAnalytics */; };
 		7885764B2BB8878900BB039F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764A2BB8878900BB039F /* FirebaseAuth */; };
 		7885764D2BB887DF00BB039F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764C2BB887DF00BB039F /* FirebaseDatabase */; };
@@ -130,6 +133,9 @@
 		783E73612B80684E009A01FD /* The_MouveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_MouveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		783F17A92BBCA9A900A08990 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		783F17AC2BBCF4B500A08990 /* FeedMouvesFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMouvesFilter.swift; sourceTree = "<group>"; };
+		783F17AE2BBDC8F600A08990 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		783F17B32BBE276E00A08990 /* MouveCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouveCardView.swift; sourceTree = "<group>"; };
+		783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouveCardViewModel.swift; sourceTree = "<group>"; };
 		7885765E2BB88CF900BB039F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		788576602BB8A44300BB039F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		789D79FE2BA0D056005873A9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -321,6 +327,31 @@
 				783F17AC2BBCF4B500A08990 /* FeedMouvesFilter.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		783F17B02BBE269300A08990 /* MouveCard */ = {
+			isa = PBXGroup;
+			children = (
+				783F17B12BBE26B200A08990 /* View */,
+				783F17B22BBE26BC00A08990 /* ViewModel */,
+			);
+			path = MouveCard;
+			sourceTree = "<group>";
+		};
+		783F17B12BBE26B200A08990 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				783F17B32BBE276E00A08990 /* MouveCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		783F17B22BBE26BC00A08990 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		789D79FD2BA0D035005873A9 /* ViewModel */ = {
@@ -572,9 +603,10 @@
 		78F7C0E52B9104FE009885C5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				78F7C13E2B9B914B009885C5 /* PreviewProvider.swift */,
-				789D7A422BA9312A005873A9 /* Date.swift */,
 				7885765E2BB88CF900BB039F /* AppDelegateExtension.swift */,
+				783F17AE2BBDC8F600A08990 /* Color.swift */,
+				789D7A422BA9312A005873A9 /* Date.swift */,
+				78F7C13E2B9B914B009885C5 /* PreviewProvider.swift */,
 				783F17A92BBCA9A900A08990 /* String.swift */,
 			);
 			path = Extensions;
@@ -656,6 +688,7 @@
 		78F7C0F12B910603009885C5 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				783F17B02BBE269300A08990 /* MouveCard */,
 				783F17AB2BBCF49900A08990 /* Model */,
 				78F7C1022B9172FD009885C5 /* View */,
 				789D7A0E2BA22683005873A9 /* ViewModel */,
@@ -1030,6 +1063,7 @@
 				78F7C1222B97BC33009885C5 /* RegistrationViewModel.swift in Sources */,
 				78F7C11E2B928796009885C5 /* EditProfileView.swift in Sources */,
 				78F7C14B2B9BA0F3009885C5 /* ContentListHeaderView.swift in Sources */,
+				783F17B42BBE276E00A08990 /* MouveCardView.swift in Sources */,
 				78F7C1072B9173A1009885C5 /* CreateMouveView.swift in Sources */,
 				789D7A462BA9343B005873A9 /* ActiveNowViewModel.swift in Sources */,
 				789D7A292BA3A2E0005873A9 /* ChatMessageCellView.swift in Sources */,
@@ -1043,6 +1077,7 @@
 				789D7A182BA251C5005873A9 /* UserContentListViewModel.swift in Sources */,
 				789D7A1F2BA29DC1005873A9 /* MessageListRowView.swift in Sources */,
 				78F7C1042B917312009885C5 /* MouveFeedView.swift in Sources */,
+				783F17B82BBE2E2E00A08990 /* MouveCardViewModel.swift in Sources */,
 				789D7A3E2BA75D34005873A9 /* FirestoreConstants.swift in Sources */,
 				789D7A672BB86117005873A9 /* AppDelegate.swift in Sources */,
 				7885765F2BB88CF900BB039F /* AppDelegateExtension.swift in Sources */,
@@ -1051,6 +1086,7 @@
 				78F7C0FC2B9134E4009885C5 /* EmailRegistrationView.swift in Sources */,
 				78F7C1432B9B99FD009885C5 /* CurrentUserProfileView.swift in Sources */,
 				789D7A2E2BA3AC07005873A9 /* NewMessageViewModel.swift in Sources */,
+				783F17AF2BBDC8F600A08990 /* Color.swift in Sources */,
 				78F7C1372B9A829A009885C5 /* UserService.swift in Sources */,
 				789D7A0B2BA207D1005873A9 /* MouveService.swift in Sources */,
 				789D7A1C2BA29AD6005873A9 /* ActiveNowView.swift in Sources */,

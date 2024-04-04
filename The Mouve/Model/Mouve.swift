@@ -18,6 +18,8 @@ struct Mouve: Identifiable, Codable {
     var title: String
     var user: User?
     
+    var didAttend: Bool? = false
+    
     var id: String {
         return mouveId ?? NSUUID().uuidString
     }
