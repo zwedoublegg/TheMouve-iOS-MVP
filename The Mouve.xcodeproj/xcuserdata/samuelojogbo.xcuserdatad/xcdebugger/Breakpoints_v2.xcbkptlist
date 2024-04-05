@@ -84,5 +84,131 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BEAFF26-FE24-4399-B453-D2D1BCF89B36"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "The Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "unAttend()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0BEAFF26-FE24-4399-B453-D2D1BCF89B36 - 6dd58673615afe18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for The_Mouve.MouveCardViewModel.unAttend() async throws -&gt; ()"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "0BEAFF26-FE24-4399-B453-D2D1BCF89B36 - 5e21898d28d1650e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "The_Mouve.MouveCardViewModel.unAttend() async throws -&gt; ()"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "0BEAFF26-FE24-4399-B453-D2D1BCF89B36 - 6dd58673615afe18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for The_Mouve.MouveCardViewModel.unAttend() async throws -&gt; ()"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "625F6123-B219-4566-A244-39CEB377D94C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "The Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "attend()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "625F6123-B219-4566-A244-39CEB377D94C - e82254ccf008baa3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for The_Mouve.MouveCardViewModel.attend() async throws -&gt; ()"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "625F6123-B219-4566-A244-39CEB377D94C - bcf0ac9822f96d91"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "The_Mouve.MouveCardViewModel.attend() async throws -&gt; ()"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "625F6123-B219-4566-A244-39CEB377D94C - e82254ccf008baa3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for The_Mouve.MouveCardViewModel.attend() async throws -&gt; ()"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Core/Feed/MouveCard/ViewModel/MouveCardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

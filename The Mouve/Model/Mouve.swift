@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-struct Mouve: Identifiable, Codable {
+struct Mouve: Identifiable, Hashable, Codable {
     @DocumentID var mouveId: String?
     var attendees: Int
     var mouveCaption: String

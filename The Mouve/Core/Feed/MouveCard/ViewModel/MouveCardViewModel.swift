@@ -7,18 +7,46 @@
 
 import Foundation
 
+@MainActor
 class MouveCardViewModel: ObservableObject {
     @Published var mouve: Mouve
-    
+
     init(mouve: Mouve){
         self.mouve = mouve
+        Task {
+            try await isUserAttendingMouve()
+        }
     }
     
     func attend() async throws {
-        mouve.didAttend = true
+        do {
+            let mouveCopy = mouve
+            mouve.didAttend = true
+            mouve.attendees += 1
+
+            try await MouveService.attendMouve(mouveCopy)
+        } catch {
+            mouve.didAttend = false
+            mouve.attendees -= 1
+            print("error attending mouve")
+        }
     }
     
     func unAttend() async throws {
-        mouve.didAttend = false
+        do {
+            let mouveCopy = mouve
+            mouve.didAttend = false
+            mouve.attendees -= 1
+
+            try await MouveService.unattendMouve(mouveCopy)
+        } catch {
+            mouve.didAttend = true
+            mouve.attendees += 1
+            print("error unattending mouve")
+        }
+    }
+    
+    func isUserAttendingMouve() async throws{
+        self.mouve.didAttend = try await MouveService.isUserAttendingMouve(mouve)
     }
 }

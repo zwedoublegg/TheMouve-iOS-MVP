@@ -19,6 +19,8 @@
 		783F17AF2BBDC8F600A08990 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17AE2BBDC8F600A08990 /* Color.swift */; };
 		783F17B42BBE276E00A08990 /* MouveCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17B32BBE276E00A08990 /* MouveCardView.swift */; };
 		783F17B82BBE2E2E00A08990 /* MouveCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */; };
+		783F17BD2BC0987000A08990 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17BC2BC0987000A08990 /* CommentsView.swift */; };
+		783F17BF2BC098A700A08990 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17BE2BC098A700A08990 /* CommentsViewModel.swift */; };
 		788576492BB8878300BB039F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 788576482BB8878300BB039F /* FirebaseAnalytics */; };
 		7885764B2BB8878900BB039F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764A2BB8878900BB039F /* FirebaseAuth */; };
 		7885764D2BB887DF00BB039F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764C2BB887DF00BB039F /* FirebaseDatabase */; };
@@ -136,6 +138,8 @@
 		783F17AE2BBDC8F600A08990 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		783F17B32BBE276E00A08990 /* MouveCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouveCardView.swift; sourceTree = "<group>"; };
 		783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouveCardViewModel.swift; sourceTree = "<group>"; };
+		783F17BC2BC0987000A08990 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		783F17BE2BC098A700A08990 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		7885765E2BB88CF900BB039F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		788576602BB8A44300BB039F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		789D79FE2BA0D056005873A9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 		783F17B02BBE269300A08990 /* MouveCard */ = {
 			isa = PBXGroup;
 			children = (
+				783F17B92BC0983A00A08990 /* Comments */,
 				783F17B12BBE26B200A08990 /* View */,
 				783F17B22BBE26BC00A08990 /* ViewModel */,
 			);
@@ -352,6 +357,31 @@
 				783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		783F17B92BC0983A00A08990 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				783F17BB2BC0985700A08990 /* View */,
+				783F17BA2BC0984F00A08990 /* ViewModel */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		783F17BA2BC0984F00A08990 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				783F17BE2BC098A700A08990 /* CommentsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		783F17BB2BC0985700A08990 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				783F17BC2BC0987000A08990 /* CommentsView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		789D79FD2BA0D035005873A9 /* ViewModel */ = {
@@ -1097,6 +1127,8 @@
 				78F7C12F2B997B49009885C5 /* User.swift in Sources */,
 				789D7A272BA39427005873A9 /* ChatView.swift in Sources */,
 				789D7A382BA3E5EF005873A9 /* ChatViewModel.swift in Sources */,
+				783F17BD2BC0987000A08990 /* CommentsView.swift in Sources */,
+				783F17BF2BC098A700A08990 /* CommentsViewModel.swift in Sources */,
 				78F7C11A2B92797B009885C5 /* ProfileMouvesFilter.swift in Sources */,
 				789D7A2B2BA3A732005873A9 /* ChatBubbleView.swift in Sources */,
 				78F7C1492B9B9E08009885C5 /* ProfileHeaderView.swift in Sources */,

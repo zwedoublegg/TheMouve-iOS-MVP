@@ -10,15 +10,19 @@ import SwiftUI
 struct MouveCardView: View {
 //    let mouve: Mouve
     @State private var bio = ""
-    @State private var  isPrivateProfile = false
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewModel: MouveCardViewModel
+    @StateObject var viewModel: MouveCardViewModel
+    
+    private var mouve: Mouve {
+        return viewModel.mouve
+    }
     
     private var didAttend: Bool {
-        return viewModel.mouve.didAttend ?? false
+        return mouve.didAttend ?? false
     }
+    
     init(mouve: Mouve){
-        self.viewModel = MouveCardViewModel(mouve: mouve)
+        self._viewModel = StateObject(wrappedValue:MouveCardViewModel(mouve: mouve))
     }
     
     var body: some View {
@@ -33,7 +37,7 @@ struct MouveCardView: View {
                             Text(verbatim: "Name")
                                 .fontWeight(.semibold)
                             
-                            Text(verbatim: "user.username")
+                            Text(verbatim: mouve.mouveCaption)
                         })
                         Spacer()
                     }
@@ -68,7 +72,7 @@ struct MouveCardView: View {
                 }
                 .padding()
                 
-                .navigationTitle("Mouve Name")
+                .navigationTitle(mouve.mouveCaption)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar(content: {
                     ToolbarItem(placement: .navigationBarLeading, content: {
@@ -82,7 +86,6 @@ struct MouveCardView: View {
                     ToolbarItem(placement: .navigationBarTrailing, content: {
                         Button ("Done") {
                             Task {
-//                                try await viewModel.updateUserData()
                                 dismiss()
                             }
                         }

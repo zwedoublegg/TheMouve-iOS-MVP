@@ -11,6 +11,7 @@ struct MouveFeedView: View {
     @StateObject var viewModel = FeedViewModel()
     @State private var selectedFilter: FeedMouvesFilter = .scene
     @State private var showMouveCard = false
+    @State private var selectedMouve: Mouve?
     @Namespace var animation
     
     private var filterBarWidth: CGFloat {
@@ -20,7 +21,7 @@ struct MouveFeedView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView(showsIndicators: false){
+            ScrollView(showsIndicators: true){
                 HStack{
                     ForEach(FeedMouvesFilter.allCases) { filter in
                         VStack {
@@ -52,13 +53,15 @@ struct MouveFeedView: View {
                     case .scene:
                         ForEach (viewModel.mouves) { mouve in
                             MouveFeedCellView( mouve: mouve)
+                                .transition(.move(edge: .leading)) //for animating tabe selector
                                 .onTapGesture(perform: {
+                                    selectedMouve = mouve
                                     showMouveCard.toggle()
                                 })
-                                .sheet(isPresented: $showMouveCard, content: {
-                                    MouveCardView(mouve: mouve)
+                                .onAppear(perform: {
+                                    selectedMouve = mouve
                                 })
-                                .transition(.move(edge: .leading))
+                                
                         }
                     case .following:
                         ForEach(0 ... 1, id: \.self) { mouve in
@@ -73,6 +76,11 @@ struct MouveFeedView: View {
             .refreshable {
                 Task{ try await viewModel.fetchMouves() }
             }
+            .sheet(isPresented: $showMouveCard, content: {
+                if let mouve = $selectedMouve.wrappedValue {
+                    MouveCardView(mouve: mouve)
+                }
+            })
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{

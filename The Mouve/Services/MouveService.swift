@@ -39,3 +39,53 @@ struct MouveService {
         return mouves.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() })
     }
 }
+
+// MARL - Attendees
+
+extension MouveService {
+    static func attendMouve(_ mouve: Mouve) async throws {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        async let _ =  try await FirestoreConstants.MouvesCollection
+            .document(mouve.id)
+            .collection("mouve-attendees")
+            .document(uid).setData([ : ])
+        
+        async let _ =  try await FirestoreConstants.MouvesCollection
+            .document(mouve.id)
+            .updateData(["attendees" : mouve.attendees + 1])
+        
+        async let _ =  try await FirestoreConstants.UsersCollection
+            .document(uid)
+            .collection("attending")
+            .document(mouve.id).setData([ : ])
+    }
+    
+    static func unattendMouve(_ mouve: Mouve) async throws {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        async let _ =  try await FirestoreConstants.MouvesCollection
+            .document(mouve.id)
+            .collection("mouve-attendees")
+            .document(uid).delete()
+        
+        async let _ =  try await FirestoreConstants.MouvesCollection
+            .document(mouve.id)
+            .updateData(["attendees" : mouve.attendees - 1])
+        
+        async let _ =  try await FirestoreConstants.UsersCollection
+            .document(uid)
+            .collection("attending")
+            .document(mouve.id).delete()
+    }
+    
+    static func isUserAttendingMouve(_ mouve: Mouve) async throws -> Bool {
+        guard let uid = Auth.auth().currentUser?.uid else { return false }
+        let snapshot = try await FirestoreConstants.UsersCollection
+            .document(uid)
+            .collection("attending")
+            .document(mouve.id).getDocument()
+        
+        return snapshot.exists
+    }
+}
