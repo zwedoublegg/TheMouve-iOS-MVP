@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MouveFeedCellView: View {
     let mouve: Mouve
+    @State private var showMouveCard = false
+    @State private var showMouveStory = false
     
     var body: some View {
         VStack {
@@ -60,13 +62,24 @@ struct MouveFeedCellView: View {
                             .shadow(color: .black, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                             .opacity(1)
                         )
+                    .onTapGesture(perform: {
+                        showMouveStory.toggle()
+                    })
                     
             }
-//            .padding(.horizontal)
             .padding(.top)
             
             Divider()
         }
+        .onTapGesture(perform: {
+            showMouveCard.toggle()
+        })
+        .sheet(isPresented: $showMouveCard, content: {
+            MouveCardView(mouve: mouve)
+        })
+        .fullScreenCover(isPresented: $showMouveStory, content: {
+            StoryView()
+        })
     }
 }
 

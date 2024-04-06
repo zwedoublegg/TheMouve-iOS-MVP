@@ -19,4 +19,5 @@ class DeveloperPreview {
     
     let user = User(uid: "123", fullName: "Jiggy The Don", email: "jig@jig.com", username: "jiggyTheDon") // uid could be NSUUID().uuidString
     let mouve = Mouve(attendees: 0, mouveCaption: "This is a test caption", ownerUid: "123", timestamp: Timestamp(), title: "This is a test mouve title")
+    let comment = Comment(commentText: "Testing comment for now", commentOwnerUid: "123", mouveId: "234", mouveOwnerUid: "123", timestamp: Timestamp())
 }

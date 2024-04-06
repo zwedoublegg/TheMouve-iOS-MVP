@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct MouveCardView: View {
-//    let mouve: Mouve
-    @State private var bio = ""
     @Environment(\.dismiss) var dismiss
+    @State private var showComments = false
     @StateObject var viewModel: MouveCardViewModel
     
     private var mouve: Mouve {
@@ -51,16 +50,26 @@ struct MouveCardView: View {
                         Text("Bio")
                             .fontWeight(.semibold)
                         
-                        TextField("Enter your bio...", text: $bio, axis: .vertical)
                     })
                     
                     Divider()
                     
-                    Button {
-                        handleAttendtapped()
-                    } label: {
-                        Image(systemName: didAttend ? "heart.fill" : "heart")
-                            .foregroundColor(didAttend ? .red : .black)
+                    HStack {
+                        Button {
+                            handleAttendtapped()
+                        } label: {
+                            Image(systemName: didAttend ? "heart.fill" : "heart")
+                                .foregroundColor(didAttend ? .red : .black)
+                        }
+                        
+                        Spacer()
+                        
+                        Button {
+                            showComments.toggle()
+                        } label: {
+                            Image(systemName:"message")
+                                .foregroundColor(.black)
+                        }
                     }
                 }
                 .font(.footnote)
@@ -71,7 +80,10 @@ struct MouveCardView: View {
                     RoundedRectangle(cornerRadius: 10).stroke(Color(.systemGray4), lineWidth: 1)
                 }
                 .padding()
-                
+                .sheet(isPresented: $showComments, content: {
+                    CommentsView(mouve: mouve)
+                        .presentationDragIndicator(.visible)
+                })
                 .navigationTitle(mouve.mouveCaption)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar(content: {

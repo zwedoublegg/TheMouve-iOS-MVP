@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StoryView: View {
+    @Environment(\.dismiss) var dismiss
     @State var imagesData = ["Linkedin_prof", "em", "cindy", "2222"]
     @State var currentItemData = 0
     @State var timer:  Timer?
@@ -98,7 +99,7 @@ struct StoryView: View {
     }
     
     var title: some View {
-        HStack(alignment: .center, spacing: 10){
+        HStack(alignment: .center, spacing: 4){
             Text("Mouve Title Here. Let's See now that this is long")
                 .font(.system(size: 14))
                 .foregroundColor(.white)
@@ -113,7 +114,16 @@ struct StoryView: View {
                 Image(systemName: "ellipsis")
                     .resizable()
                     .scaledToFit()
-                    .frame(minWidth: 30, maxWidth: 30, minHeight: 30, maxHeight: 30)
+                    .frame(minWidth: 20, maxWidth: 20, minHeight: 20, maxHeight: 20)
+                    .foregroundColor(.white)
+            }
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(minWidth: 20, maxWidth: 20, minHeight: 20, maxHeight: 20)
                     .foregroundColor(.white)
             }
             .padding(.horizontal)

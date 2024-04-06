@@ -54,14 +54,6 @@ struct MouveFeedView: View {
                         ForEach (viewModel.mouves) { mouve in
                             MouveFeedCellView( mouve: mouve)
                                 .transition(.move(edge: .leading)) //for animating tabe selector
-                                .onTapGesture(perform: {
-                                    selectedMouve = mouve
-                                    showMouveCard.toggle()
-                                })
-                                .onAppear(perform: {
-                                    selectedMouve = mouve
-                                })
-                                
                         }
                     case .following:
                         ForEach(0 ... 1, id: \.self) { mouve in
@@ -76,11 +68,6 @@ struct MouveFeedView: View {
             .refreshable {
                 Task{ try await viewModel.fetchMouves() }
             }
-            .sheet(isPresented: $showMouveCard, content: {
-                if let mouve = $selectedMouve.wrappedValue {
-                    MouveCardView(mouve: mouve)
-                }
-            })
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{

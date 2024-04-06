@@ -11,6 +11,7 @@ struct MessageListView: View {
     @State private var showNewMessageView = false
     @State private var selectedUser: User?
     @State private var showChatView = false
+    @State private var onlineFriends = false
     @StateObject var viewModel = MessageListViewModel()
 
     
@@ -21,12 +22,14 @@ struct MessageListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ActiveNowView()
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets())
-                    .padding(.vertical)
-                    .padding(.horizontal, 4)
-
+                if onlineFriends{
+                    ActiveNowView()
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.vertical)
+                        .padding(.horizontal, 4)
+                }
+                
                 ForEach (viewModel.recentMessages.sorted(by: { $0.timestampDateVale > $1.timestampDateVale })) { message in
                     ZStack {
                         NavigationLink(value: message){
@@ -37,6 +40,7 @@ struct MessageListView: View {
                     }
                 }
             }
+            .padding(.vertical)
             .listStyle(PlainListStyle())
             .onChange(of: selectedUser) { newValue in //remove "newValue in" for iOS 17+
                 showChatView = newValue != nil
@@ -69,7 +73,7 @@ struct MessageListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {                        
-                        Text("Chats")
+                        Text("Messages")
                             .font(.title)
                             .fontWeight(.semibold)
                     }

@@ -21,6 +21,9 @@
 		783F17B82BBE2E2E00A08990 /* MouveCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */; };
 		783F17BD2BC0987000A08990 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17BC2BC0987000A08990 /* CommentsView.swift */; };
 		783F17BF2BC098A700A08990 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17BE2BC098A700A08990 /* CommentsViewModel.swift */; };
+		783F17C12BC09A2300A08990 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17C02BC09A2300A08990 /* Comment.swift */; };
+		783F17C42BC09A5200A08990 /* CommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17C32BC09A5200A08990 /* CommentsService.swift */; };
+		783F17C62BC09A8400A08990 /* CommentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17C52BC09A8400A08990 /* CommentsViewCell.swift */; };
 		788576492BB8878300BB039F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 788576482BB8878300BB039F /* FirebaseAnalytics */; };
 		7885764B2BB8878900BB039F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764A2BB8878900BB039F /* FirebaseAuth */; };
 		7885764D2BB887DF00BB039F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764C2BB887DF00BB039F /* FirebaseDatabase */; };
@@ -140,6 +143,9 @@
 		783F17B72BBE2E2E00A08990 /* MouveCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouveCardViewModel.swift; sourceTree = "<group>"; };
 		783F17BC2BC0987000A08990 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		783F17BE2BC098A700A08990 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		783F17C02BC09A2300A08990 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		783F17C32BC09A5200A08990 /* CommentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsService.swift; sourceTree = "<group>"; };
+		783F17C52BC09A8400A08990 /* CommentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewCell.swift; sourceTree = "<group>"; };
 		7885765E2BB88CF900BB039F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		788576602BB8A44300BB039F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		789D79FE2BA0D056005873A9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -362,6 +368,7 @@
 		783F17B92BC0983A00A08990 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
+				783F17C22BC09A2D00A08990 /* Service */,
 				783F17BB2BC0985700A08990 /* View */,
 				783F17BA2BC0984F00A08990 /* ViewModel */,
 			);
@@ -380,8 +387,17 @@
 			isa = PBXGroup;
 			children = (
 				783F17BC2BC0987000A08990 /* CommentsView.swift */,
+				783F17C52BC09A8400A08990 /* CommentsViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		783F17C22BC09A2D00A08990 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				783F17C32BC09A5200A08990 /* CommentsService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		789D79FD2BA0D035005873A9 /* ViewModel */ = {
@@ -625,6 +641,7 @@
 				789D7A5F2BAC9309005873A9 /* GPTResponseModels */,
 				789D7A322BA3B9CA005873A9 /* Message.swift */,
 				789D7A052BA2064D005873A9 /* Mouve.swift */,
+				783F17C02BC09A2300A08990 /* Comment.swift */,
 				78F7C12E2B997B49009885C5 /* User.swift */,
 			);
 			path = Model;
@@ -1106,10 +1123,12 @@
 				78F7C12B2B993760009885C5 /* ContentViewModel.swift in Sources */,
 				789D7A182BA251C5005873A9 /* UserContentListViewModel.swift in Sources */,
 				789D7A1F2BA29DC1005873A9 /* MessageListRowView.swift in Sources */,
+				783F17C62BC09A8400A08990 /* CommentsViewCell.swift in Sources */,
 				78F7C1042B917312009885C5 /* MouveFeedView.swift in Sources */,
 				783F17B82BBE2E2E00A08990 /* MouveCardViewModel.swift in Sources */,
 				789D7A3E2BA75D34005873A9 /* FirestoreConstants.swift in Sources */,
 				789D7A672BB86117005873A9 /* AppDelegate.swift in Sources */,
+				783F17C12BC09A2300A08990 /* Comment.swift in Sources */,
 				7885765F2BB88CF900BB039F /* AppDelegateExtension.swift in Sources */,
 				789D7A552BAA5AF9005873A9 /* GPTFunction.swift in Sources */,
 				78F7C13A2B9A8518009885C5 /* ProfileViewModel.swift in Sources */,
@@ -1162,6 +1181,7 @@
 				78F7C12D2B993DBE009885C5 /* LoginViewModel.swift in Sources */,
 				789D7A432BA9312A005873A9 /* Date.swift in Sources */,
 				789D7A142BA250D6005873A9 /* UserContentListView.swift in Sources */,
+				783F17C42BC09A5200A08990 /* CommentsService.swift in Sources */,
 				789D7A232BA38A88005873A9 /* NewMessageView.swift in Sources */,
 				78F7C13F2B9B914B009885C5 /* PreviewProvider.swift in Sources */,
 				789D7A102BA22699005873A9 /* FeedViewModel.swift in Sources */,
