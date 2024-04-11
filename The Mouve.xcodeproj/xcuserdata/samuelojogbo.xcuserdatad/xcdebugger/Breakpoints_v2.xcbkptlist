@@ -39,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "828F467C-754C-4275-9CF1-13442562D697"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "The Mouve/Core/Profile/View/ProfileView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5B1FFB09-9463-4EE1-AF87-0D52E0D5E860"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -224,6 +208,85 @@
             endingLineNumber = "59"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3ECB7C1-CED6-44E3-A2AB-16A02F1CE118"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "The Mouve/Core/Profile/Components/View/ProfileHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0913E60-499F-4958-9874-699799C4620A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "The Mouve/Services/UserService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "fetchUserStats(uid:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E0913E60-499F-4958-9874-699799C4620A - 478a767529c67351"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for static The_Mouve.UserService.fetchUserStats(uid: Swift.String) async throws -&gt; The_Mouve.UserStats"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Services/UserService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "E0913E60-499F-4958-9874-699799C4620A - 3995bb4f325b1150"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(8) suspend resume partial function for static The_Mouve.UserService.fetchUserStats(uid: Swift.String) async throws -&gt; The_Mouve.UserStats"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Services/UserService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E0913E60-499F-4958-9874-699799C4620A - a4507aa392cbe81d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(13) suspend resume partial function for static The_Mouve.UserService.fetchUserStats(uid: Swift.String) async throws -&gt; The_Mouve.UserStats"
+                  moduleName = "The Mouve"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/samuelojogbo/Dev/The%20Mouve/The%20Mouve/Services/UserService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "192">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

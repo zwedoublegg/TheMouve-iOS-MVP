@@ -51,8 +51,8 @@ struct UserContentListView: View {
             LazyVStack(alignment: .center, spacing: 4, content:{
                 switch selectedFilter {
                 case .mouves:
-//                    ForEach(viewModel.attendingMouves) { mouve in
-                    ForEach(0 ... 1, id: \.self) { mouve in
+                    ForEach(viewModel.attendingMouves) { mouve in
+//                    ForEach(0 ... 1, id: \.self) { mouve in
                         MouveFeedCellView(mouve: Mouve.MOCK_MOUVE)
                             .transition(.move(edge: .leading))
                     }

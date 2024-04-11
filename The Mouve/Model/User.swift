@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseFirestoreSwift
 
 struct User: Identifiable, Codable, Hashable {
@@ -17,6 +18,8 @@ struct User: Identifiable, Codable, Hashable {
     var profileImageUrl: String?
     var bio: String?
     
+    var isFollowed: Bool? = false
+    var stats: UserStats?
     var id: String {
         return uid ?? NSUUID().uuidString
     }
@@ -26,6 +29,18 @@ struct User: Identifiable, Codable, Hashable {
         let components = formatter.personNameComponents(from: fullName)
         return components?.givenName ?? fullName
     }
+    
+    var isCurrentUser: Bool {
+        guard let currentUid = Auth.auth().currentUser?.uid else {return false}
+        return currentUid == id
+    }
+}
+
+struct UserStats: Codable, Hashable {
+    var followingCount: Int
+    var followersCount: Int
+    var friendsCount: Int
+    var mouveCount: Int
 }
 
 

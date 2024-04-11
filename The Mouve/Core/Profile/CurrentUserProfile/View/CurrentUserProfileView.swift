@@ -19,7 +19,9 @@ struct CurrentUserProfileView: View {
         NavigationStack{
             ScrollView(showsIndicators: false, content: {
                 VStack(alignment: .center, spacing: 4, content: {
-                    ProfileHeaderView(user: currentUser)
+                    if let user = currentUser {
+                        ProfileHeaderView(user: user)
+                    }
                     
                     HStack(alignment: .center, spacing: 6, content: { //TODO: Optimize code with viewmodels
                         Button(action: {

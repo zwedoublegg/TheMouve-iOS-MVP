@@ -62,3 +62,77 @@ class UserService {
         self.currentUser?.profileImageUrl = imageUrl
     }
 }
+
+// MARK: - Following
+extension UserService {
+    static func follow(uid: String) async throws {
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        
+        async let _ = try await FirestoreConstants.FollowingCollection
+            .document(currentUserUid)
+            .collection("user-following")
+            .document(uid)
+            .setData([:])
+        
+        async let _ = try await FirestoreConstants.FollowersCollection
+            .document(uid)
+            .collection("user-followers")
+            .document(currentUserUid)
+            .setData([:])
+    }
+    
+    static func unfollow(uid: String) async throws {
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+
+        async let _ = try await FirestoreConstants.FollowingCollection
+            .document(currentUserUid)
+            .collection("user-following")
+            .document(uid)
+            .delete()
+        
+        async let _ = try await FirestoreConstants.FollowersCollection
+            .document(uid)
+            .collection("user-followers")
+            .document(currentUserUid)
+            .delete()
+    }
+    
+    static func checkIfUserIsFollowed(uid: String) async throws -> Bool{
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return false }
+        
+        let snapshot = try await FirestoreConstants.FollowingCollection
+            .document(currentUserUid)
+            .collection("user-following")
+            .document(uid)
+            .getDocument()
+        
+        return snapshot.exists
+    }
+    
+}
+
+// MARK: - User Stats
+extension UserService {
+    static func fetchUserStats(uid: String) async throws -> UserStats{
+//        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        async let followingSnapshot  = try await FirestoreConstants.FollowingCollection
+            .document(uid)
+            .collection("user-following")
+            .getDocuments()
+        let followingCount = try await followingSnapshot.count
+        
+        async let followersSnapshot  = try await FirestoreConstants.FollowersCollection
+            .document(uid)
+            .collection("user-followers")
+            .getDocuments()
+        let followersCount = try await followersSnapshot.count
+        
+        async let mouvesCountSnapshot = try await FirestoreConstants.MouvesCollection
+            .whereField("owneruid", isEqualTo: uid)
+            .getDocuments()
+        let mouvesCount = try await mouvesCountSnapshot.count
+        
+        print("DEBUG: did call fetch user stats here and now")
+        return .init(followingCount: followingCount, followersCount: followersCount, friendsCount: 0, mouveCount: mouvesCount)
+    }
+}

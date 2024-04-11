@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct ProfileView: View {
-    //Dependency injection
-    let user: User
+    @ObservedObject var viewModel: ProfileViewModel
+    
+    private var user: User {
+        return viewModel.user
+    }
+    private var isFollowed: Bool {
+        return user.isFollowed ?? false
+    }
+    init(user: User){
+        self.viewModel = ProfileViewModel(user: user)
+    }
   
     var body: some View {
         ScrollView(showsIndicators: false, content: {
@@ -17,17 +26,21 @@ struct ProfileView: View {
                 
                 ProfileHeaderView(user: user)
                 
-                HStack(alignment: .center, spacing: 4, content: { //TODO: Optimize code with viewmodels
+                HStack(alignment: .center, spacing: 4, content: {
                     Button(action: {
-                        
+                        handleFollowTapped()
                     }, label: {
-                        Text("Follow")
+                        Text( isFollowed ? "Following" : "Follow")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(.white)
+                            .foregroundColor(isFollowed ? .black : .white)
                             .frame(width: 200, height: 32)
-                            .background(.black)
+                            .background(isFollowed ? .white : .black)
                             .cornerRadius(8)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(isFollowed ? .black : .clear, lineWidth: 1)
+                            }
                     })
                     
                     Button(action: {
@@ -62,6 +75,14 @@ struct ProfileView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal)
+    }
+    
+    func handleFollowTapped() {
+        if isFollowed {
+            viewModel.unfollow()
+        } else {
+            viewModel.follow()
+        }
     }
 }
 

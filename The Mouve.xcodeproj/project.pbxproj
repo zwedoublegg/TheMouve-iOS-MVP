@@ -24,6 +24,9 @@
 		783F17C12BC09A2300A08990 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17C02BC09A2300A08990 /* Comment.swift */; };
 		783F17C42BC09A5200A08990 /* CommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17C32BC09A5200A08990 /* CommentsService.swift */; };
 		783F17C62BC09A8400A08990 /* CommentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17C52BC09A8400A08990 /* CommentsViewCell.swift */; };
+		783F17CA2BC6088F00A08990 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17C92BC6088F00A08990 /* ProfileHeaderViewModel.swift */; };
+		783F17CE2BC766D300A08990 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17CD2BC766D300A08990 /* NotificationView.swift */; };
+		783F17D02BC7670600A08990 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F17CF2BC7670600A08990 /* NotificationViewModel.swift */; };
 		788576492BB8878300BB039F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 788576482BB8878300BB039F /* FirebaseAnalytics */; };
 		7885764B2BB8878900BB039F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764A2BB8878900BB039F /* FirebaseAuth */; };
 		7885764D2BB887DF00BB039F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7885764C2BB887DF00BB039F /* FirebaseDatabase */; };
@@ -146,6 +149,9 @@
 		783F17C02BC09A2300A08990 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		783F17C32BC09A5200A08990 /* CommentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsService.swift; sourceTree = "<group>"; };
 		783F17C52BC09A8400A08990 /* CommentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewCell.swift; sourceTree = "<group>"; };
+		783F17C92BC6088F00A08990 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		783F17CD2BC766D300A08990 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		783F17CF2BC7670600A08990 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		7885765E2BB88CF900BB039F /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		788576602BB8A44300BB039F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		789D79FE2BA0D056005873A9 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -400,6 +406,22 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		783F17CB2BC766AD00A08990 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				783F17CF2BC7670600A08990 /* NotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		783F17CC2BC766BD00A08990 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				783F17CD2BC766D300A08990 /* NotificationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		789D79FD2BA0D035005873A9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				789D7A172BA251C5005873A9 /* UserContentListViewModel.swift */,
+				783F17C92BC6088F00A08990 /* ProfileHeaderViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -728,6 +751,8 @@
 		78F7C0F02B910601009885C5 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				783F17CC2BC766BD00A08990 /* View */,
+				783F17CB2BC766AD00A08990 /* ViewModel */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1110,6 +1135,7 @@
 				78F7C1222B97BC33009885C5 /* RegistrationViewModel.swift in Sources */,
 				78F7C11E2B928796009885C5 /* EditProfileView.swift in Sources */,
 				78F7C14B2B9BA0F3009885C5 /* ContentListHeaderView.swift in Sources */,
+				783F17D02BC7670600A08990 /* NotificationViewModel.swift in Sources */,
 				783F17B42BBE276E00A08990 /* MouveCardView.swift in Sources */,
 				78F7C1072B9173A1009885C5 /* CreateMouveView.swift in Sources */,
 				789D7A462BA9343B005873A9 /* ActiveNowViewModel.swift in Sources */,
@@ -1170,6 +1196,7 @@
 				789D7A512BAA554D005873A9 /* Secrets.swift in Sources */,
 				78F7C13D2B9B8E94009885C5 /* SearchViewModel.swift in Sources */,
 				78F7C10E2B917446009885C5 /* ProfileView.swift in Sources */,
+				783F17CA2BC6088F00A08990 /* ProfileHeaderViewModel.swift in Sources */,
 				789D7A352BA3BB72005873A9 /* MessageService.swift in Sources */,
 				789D7A4D2BAA4FD5005873A9 /* OpenAIService.swift in Sources */,
 				78F7C14F2B9BA69C009885C5 /* UserSocialMediaButtonModifier.swift in Sources */,
@@ -1178,6 +1205,7 @@
 				78F7C1462B9B9AD9009885C5 /* CurrentUserProfileViewModel.swift in Sources */,
 				789D7A092BA2075B005873A9 /* CreateMouveViewModel.swift in Sources */,
 				789D7A4B2BA94152005873A9 /* SendMessageBackgroundView.swift in Sources */,
+				783F17CE2BC766D300A08990 /* NotificationView.swift in Sources */,
 				78F7C12D2B993DBE009885C5 /* LoginViewModel.swift in Sources */,
 				789D7A432BA9312A005873A9 /* Date.swift in Sources */,
 				789D7A142BA250D6005873A9 /* UserContentListView.swift in Sources */,

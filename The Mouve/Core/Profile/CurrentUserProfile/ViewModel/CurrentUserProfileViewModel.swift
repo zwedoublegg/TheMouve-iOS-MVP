@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import PhotosUI
 import SwiftUI
+import FirebaseAuth
 
 class CurrentUserProfileViewModel: ObservableObject {
     @Published var currentUser: User?

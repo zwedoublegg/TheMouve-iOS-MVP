@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
-    var user: User?
+    var user: User
     
-    init(user: User?){
+    private var userStats: UserStats {
+        return user.stats ?? .init(followingCount: 0, followersCount: 0, friendsCount: 0, mouveCount: 0)
+    }
+    init(user: User){
         self.user = user
     }
     
     var body: some View {
         CircularProfileImageView(user: user, size: .large)
         
-        Text(user?.username ?? "")
+        Text(user.username)
             .font(.title2)
             .fontWeight(.semibold)
         
-        if let bio = user?.bio {
+        if let bio = user.bio {
             Text("This is the user bio and tell me what you think about this artist \(bio)")
                 .multilineTextAlignment(.center)
                 .font(.headline)
@@ -29,11 +32,11 @@ struct ProfileHeaderView: View {
         }
         
         HStack { // This displays user's stats
-            Text("Following 200")
+            Text("Following \(userStats.followingCount)")
             Text("||")
-            Text("12 Friends")
+            Text("\(userStats.followingCount) Friends")
             Text("||")
-            Text("1200 Followers")
+            Text("\(userStats.followersCount) Followers")
         }
         .font(.footnote)
         .fontWeight(.semibold)

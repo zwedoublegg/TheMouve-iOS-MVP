@@ -8,20 +8,42 @@
 import Foundation
 import Combine
 
+@MainActor
 class ProfileViewModel: ObservableObject {
     
-    @Published var currentUser: User?
-    private var cancellables = Set<AnyCancellable>()
+    @Published var user: User
     
-    init() {
-        setupSubscribers()
+    init(user: User) {
+        self.user = user
+        checkIfUserIsFollowed()
+//        fecthUserStats()
     }
     
-    private func setupSubscribers() {
-        UserService.shared.$currentUser.sink { [weak self] user in
-            self?.currentUser = user
-            
-            print("DEBUG: User from combine \(String(describing: user))")
-        }.store(in: &cancellables)
+//    func fecthUserStats() {
+//        Task {
+//            self.user.stats = try await UserService.fetchUserStats(uid: user.id)
+//        }
+//    }
+}
+
+extension ProfileViewModel {
+    func follow() {
+        Task {
+            try await UserService.follow(uid: user.id)
+            user.isFollowed = true
+        }
+    }
+    
+    func unfollow() {
+        Task {
+            try await UserService.unfollow(uid: user.id)
+            user.isFollowed = false
+        }
+    }
+    
+    func checkIfUserIsFollowed() {
+        Task {
+            self.user.isFollowed = try await UserService.checkIfUserIsFollowed(uid: user.id)
+        }
     }
 }
