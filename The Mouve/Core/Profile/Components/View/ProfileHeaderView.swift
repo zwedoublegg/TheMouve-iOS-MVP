@@ -32,12 +32,21 @@ struct ProfileHeaderView: View {
         }
         
         HStack { // This displays user's stats
-            Text("Following \(userStats.followingCount)")
+            NavigationLink(value: UserListConfig.following(uid: user.id)) {
+                Text("Following \(userStats.followingCount)")
+            }
             Text("||")
-            Text("\(userStats.followingCount) Friends")
+            NavigationLink(value: UserListConfig.followers(uid: user.id)) {
+                Text("\(userStats.followingCount) Friends")
+            }
             Text("||")
-            Text("\(userStats.followersCount) Followers")
+            NavigationLink(value: UserListConfig.followers(uid: user.id)) {
+                Text("\(userStats.followersCount) Followers")
+            }
         }
+        .navigationDestination(for: UserListConfig.self, destination: { config in
+            Text(config.navigationTitle)
+        })
         .font(.footnote)
         .fontWeight(.semibold)
         .foregroundColor(.gray)
