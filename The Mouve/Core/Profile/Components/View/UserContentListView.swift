@@ -52,7 +52,6 @@ struct UserContentListView: View {
                 switch selectedFilter {
                 case .mouves:
                     ForEach(viewModel.attendingMouves) { mouve in
-//                    ForEach(0 ... 1, id: \.self) { mouve in
                         MouveFeedCellView(mouve: Mouve.MOCK_MOUVE)
                             .transition(.move(edge: .leading))
                     }

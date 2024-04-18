@@ -36,8 +36,8 @@ struct ProfileHeaderView: View {
                 Text("Following \(userStats.followingCount)")
             }
             Text("||")
-            NavigationLink(value: UserListConfig.followers(uid: user.id)) {
-                Text("\(userStats.followingCount) Friends")
+            NavigationLink(value: UserListConfig.friends(uid: user.id)) {
+                Text("\(userStats.friendsCount) Friends")
             }
             Text("||")
             NavigationLink(value: UserListConfig.followers(uid: user.id)) {
@@ -45,7 +45,7 @@ struct ProfileHeaderView: View {
             }
         }
         .navigationDestination(for: UserListConfig.self, destination: { config in
-            Text(config.navigationTitle)
+            UserListView(config: config)
         })
         .font(.footnote)
         .fontWeight(.semibold)

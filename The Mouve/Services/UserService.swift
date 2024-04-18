@@ -49,6 +49,51 @@ class UserService {
         return users.filter({ $0.id != currentUserUid })
     }
     
+    static func fetchUsers(forConfig config: UserListConfig) async throws -> [User] {
+        switch config {
+        case .attending(let mouveId):
+            return try await fetchMouveAttendees(mouveId: mouveId)
+        case .followers(let uid):
+            return try await fetchFollowers(uid: uid)
+        case .following(let uid):
+            return try await fetchFollowing(uid: uid)
+        case .explore:
+            return try await fetchAllUsers()
+        case .friends:
+            return try await fetchAllUsers()
+        }
+    }
+    
+    private static func fetchFollowers(uid: String) async throws -> [User] {
+        let snapshot = try await FirestoreConstants.FollowersCollection
+            .document(uid)
+            .collection("user-followers")
+            .getDocuments()
+        
+        return try await fetchUsers(snapshot)
+    }
+    
+    private static func fetchFollowing(uid: String) async throws -> [User] {
+        let snapshot = try await FirestoreConstants.FollowingCollection
+            .document(uid)
+            .collection("user-following")
+            .getDocuments()
+        
+        return try await fetchUsers(snapshot)
+    }
+    
+    private static func fetchMouveAttendees(mouveId: String) async throws -> [User] {
+        return []
+    }
+    
+    private static func fetchUsers(_ snapshot: QuerySnapshot) async throws -> [User] {
+        var users = [User]()
+        for doc in snapshot.documents {
+            users.append(try await fetchUser(withUid: doc.documentID))
+        }
+        return users
+    }
+    
     func reset() {
         self.currentUser = nil
     }
@@ -114,25 +159,24 @@ extension UserService {
 // MARK: - User Stats
 extension UserService {
     static func fetchUserStats(uid: String) async throws -> UserStats{
-//        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
-        async let followingSnapshot  = try await FirestoreConstants.FollowingCollection
+        async let followingCount = FirestoreConstants.FollowingCollection
             .document(uid)
             .collection("user-following")
             .getDocuments()
-        let followingCount = try await followingSnapshot.count
+            .count
         
-        async let followersSnapshot  = try await FirestoreConstants.FollowersCollection
+        async let followersCount = FirestoreConstants.FollowersCollection
             .document(uid)
             .collection("user-followers")
             .getDocuments()
-        let followersCount = try await followersSnapshot.count
+            .count
         
-        async let mouvesCountSnapshot = try await FirestoreConstants.MouvesCollection
+        async let mouvesCount = FirestoreConstants.MouvesCollection
             .whereField("owneruid", isEqualTo: uid)
             .getDocuments()
-        let mouvesCount = try await mouvesCountSnapshot.count
+            .count
         
         print("DEBUG: did call fetch user stats here and now")
-        return .init(followingCount: followingCount, followersCount: followersCount, friendsCount: 0, mouveCount: mouvesCount)
+        return try await .init(followingCount: followingCount, followersCount: followersCount, friendsCount: 0, mouveCount: mouvesCount)
     }
 }
