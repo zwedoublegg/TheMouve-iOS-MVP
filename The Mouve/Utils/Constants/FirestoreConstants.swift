@@ -18,4 +18,10 @@ struct FirestoreConstants {
     
     static let FollowingCollection = FirestoreRoot.collection("following")
     static let FollowersCollection = FirestoreRoot.collection("followers")
+    
+    static let NotificationsCollection = FirestoreRoot.collection("notifications")
+    
+    static func UserNotificationCollection(uid: String) -> CollectionReference {
+        return NotificationsCollection.document(uid).collection("user-notifications")
+    }
 }

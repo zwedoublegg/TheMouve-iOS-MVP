@@ -36,6 +36,7 @@ class CommentsViewModel: ObservableObject {
         do{
             try await service.uploadcomment(comment)
             try await fetchComments()
+            NotificationManager.shared.uploadCommentNotification(toUid: mouve.ownerUid, mouve: mouve)
         } catch {
             print("Error from CommentsViewModel")
         }

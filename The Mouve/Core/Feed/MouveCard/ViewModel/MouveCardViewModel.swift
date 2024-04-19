@@ -25,6 +25,7 @@ class MouveCardViewModel: ObservableObject {
             mouve.attendees += 1
 
             try await MouveService.attendMouve(mouveCopy)
+            NotificationManager.shared.uploadAttendNotification(toUid: mouve.ownerUid, mouve: mouve)
         } catch {
             mouve.didAttend = false
             mouve.attendees -= 1

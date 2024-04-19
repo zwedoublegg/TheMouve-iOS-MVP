@@ -12,6 +12,7 @@ struct MouveFeedView: View {
     @State private var selectedFilter: FeedMouvesFilter = .scene
     @State private var showMouveCard = false
     @State private var selectedMouve: Mouve?
+    @State private var showNotificationsView = false
     @Namespace var animation
     
     private var filterBarWidth: CGFloat {
@@ -73,13 +74,16 @@ struct MouveFeedView: View {
             .toolbar{
                 ToolbarItem (placement: .navigationBarTrailing) {
                     Button{
-                        
+                        showNotificationsView.toggle()
                     } label: {
                         Image(systemName: "bell")
                             .foregroundColor(.black)
                     }
                 }
             }
+            .navigationDestination(isPresented: $showNotificationsView, destination: {
+                NotificationsView()
+            })
         }
     }
 }

@@ -176,7 +176,7 @@ extension UserService {
             .getDocuments()
             .count
         
-        print("DEBUG: did call fetch user stats here and now")
+        print("DEBUG: did call fetch user stats here and now. With uid \(uid)")
         return try await .init(followingCount: followingCount, followersCount: followersCount, friendsCount: 0, mouveCount: mouvesCount)
     }
 }

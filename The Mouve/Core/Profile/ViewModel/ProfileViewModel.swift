@@ -20,6 +20,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func fecthUserStats() {
+        guard user.stats == nil else {return}
         Task {
             self.user.stats = try await UserService.fetchUserStats(uid: user.id)
         }
@@ -28,15 +29,15 @@ class ProfileViewModel: ObservableObject {
 
 extension ProfileViewModel {
     func follow() {
-        guard user.stats == nil else {return}
         Task {
             try await UserService.follow(uid: user.id)
             user.isFollowed = true
+            
+            NotificationManager.shared.uploadFollowNotification(toUid: user.id)
         }
     }
     
     func unfollow() {
-        guard user.stats == nil else {return}
         Task {
             try await UserService.unfollow(uid: user.id)
             user.isFollowed = false
@@ -44,7 +45,7 @@ extension ProfileViewModel {
     }
     
     func checkIfUserIsFollowed() {
-        guard user.stats == nil else {return}
+        guard user.isFollowed == nil else {return}
         Task {
             self.user.isFollowed = try await UserService.checkIfUserIsFollowed(uid: user.id)
         }
