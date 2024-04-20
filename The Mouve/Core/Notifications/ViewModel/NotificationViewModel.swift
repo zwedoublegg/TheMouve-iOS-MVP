@@ -11,9 +11,11 @@ import Foundation
 class NotificationViewModel: ObservableObject {
     @Published var notifications = [TMNotification]()
     private let service: NotificationService
+    private var currentUser: User?
 
     init(service: NotificationService) {
         self.service = service
+        self.currentUser = UserService.shared.currentUser
         Task {
             await fetchNotifications()
         }
@@ -36,6 +38,7 @@ class NotificationViewModel: ObservableObject {
             
             if let mouveId = notification.mouveId {
                 notification.mouve = try await MouveService.fetchMouve(withMouveId: mouveId)
+                notification.mouve?.user = self.currentUser
             }
             
             notifications[i] = notification

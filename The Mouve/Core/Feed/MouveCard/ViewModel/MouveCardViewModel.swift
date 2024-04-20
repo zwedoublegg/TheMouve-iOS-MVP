@@ -40,6 +40,7 @@ class MouveCardViewModel: ObservableObject {
             mouve.attendees -= 1
 
             try await MouveService.unattendMouve(mouveCopy)
+            try await NotificationManager.shared.deleteAttendNotification(notificationOwnerUid: mouve.ownerUid, mouve: mouve)
         } catch {
             mouve.didAttend = true
             mouve.attendees += 1

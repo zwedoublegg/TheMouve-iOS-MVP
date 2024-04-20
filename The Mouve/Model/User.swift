@@ -17,6 +17,8 @@ struct User: Identifiable, Codable, Hashable {
     var username: String
     var profileImageUrl: String?
     var bio: String?
+    var isVerified: Bool? = false
+    var isMouver: Bool? = false
     
     var isFollowed: Bool? = false
     var stats: UserStats?

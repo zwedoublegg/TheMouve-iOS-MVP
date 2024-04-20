@@ -24,9 +24,11 @@ struct MouveFeedCellView: View {
                             .fontWeight(.semibold)
                         .foregroundColor(.cyan) //TODO: Change to App color
                         
-                        Image(systemName: "checkmark.seal.fill")
-                            .font(.system(size: 15))
-                            .foregroundColor(.black)
+                        if let _ = mouve.user?.isVerified {
+                            Image(systemName: "checkmark.seal.fill")
+                                .font(.system(size: 14))
+                                .foregroundColor(.black)
+                        }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     

@@ -32,12 +32,12 @@ struct UserContentListView: View {
                         if (selectedFilter == filter) {
                             Rectangle()
                                 .foregroundColor(.black)
-                                .frame(width: filterBarWidth, height: 1)
+                                .frame(width: filterBarWidth, height: 1.5)
                                 .matchedGeometryEffect(id: "item", in: animation)
                         } else {
                             Rectangle()
                                 .foregroundColor(.clear)
-                                .frame(width: filterBarWidth, height: 1)
+                                .frame(width: filterBarWidth, height: 1.5)
                         }
                     }
                     .onTapGesture {

@@ -9,19 +9,31 @@ import SwiftUI
 
 struct NotificationCell: View {
     let notification: TMNotification
+    @State private var showUserProfile = false
     
     var body: some View {
 
         HStack {
-//            NavigationLink(value: notification.user) {
+            NavigationLink(value: notification.user) {
                 CircularProfileImageView(user: notification.user, size: .xSmall)
-//            }
+//                .onTapGesture(perform: {
+//                    showUserProfile.toggle()
+//                })
+            }
             
             //Notification message
             HStack {
                 Text(notification.user?.username ?? "")
                     .font(.subheadline)
                     .fontWeight(.semibold) +
+                
+//                if let _ = notification.user?.isVerified {
+//                    Text("")
+//                }
+                
+                Text(Image(systemName: "checkmark.seal.fill"))
+                    .font(.system(size: 12))
+                    .foregroundColor(.black) +
                 
                 Text(" \(notification.type.notificationMessage)")
                     .font(.subheadline) +

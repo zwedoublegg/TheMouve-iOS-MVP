@@ -44,7 +44,21 @@ struct MouveService {
     }
 }
 
-// MARL - Attendees
+// MARK: - Fetching based on relations
+extension MouveService {
+    static func fetchFollowingUserMouves(uid: String) async throws -> [Mouve] {
+        let snapshot = try await Firestore
+            .firestore()
+            .collection(GlobalConstants.firebaseMouvesCollection)
+            .whereField("ownerUid", isEqualTo: uid)
+            .getDocuments()
+        
+        let mouves = snapshot.documents.compactMap({ try? $0.data(as: Mouve.self) })
+        return mouves.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() })
+    }
+}
+
+// MARK: - Attend actions
 
 extension MouveService {
     static func attendMouve(_ mouve: Mouve) async throws {

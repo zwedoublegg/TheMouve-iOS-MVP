@@ -20,9 +20,12 @@ struct NotificationsView: View {
                     }
                 }
             }
-//            .navigationDestination(for: User.self, destination: { user in
-//                ProfileView(user: user)
-//            })
+            .refreshable {
+                Task { await viewModel.fetchNotifications() }
+            }
+            .navigationDestination(for: User.self, destination: { user in
+                ProfileView(user: user)
+            })
             .navigationTitle("Notifications")
 //            .navigationBarTitleDisplayMode(.automatic)
             .navigationBarTitleDisplayMode(.inline)

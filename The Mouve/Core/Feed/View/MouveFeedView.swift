@@ -33,12 +33,12 @@ struct MouveFeedView: View {
                             if (selectedFilter == filter) {
                                 Rectangle()
                                     .foregroundColor(.black)
-                                    .frame(width: filterBarWidth, height: 1)
+                                    .frame(width: filterBarWidth, height: 1.5)
                                     .matchedGeometryEffect(id: "item", in: animation)
                             } else {
                                 Rectangle()
                                     .foregroundColor(.clear)
-                                    .frame(width: filterBarWidth, height: 1)
+                                    .frame(width: filterBarWidth, height: 1.5)
                             }
                         }
                         .onTapGesture {
@@ -48,26 +48,28 @@ struct MouveFeedView: View {
                         }
                     }
                 }
-                
                 LazyVStack(alignment: .center, spacing: 4, content:  {
                     switch selectedFilter {
                     case .scene:
                         ForEach (viewModel.mouves) { mouve in
-                            MouveFeedCellView( mouve: mouve)
+                            MouveFeedCellView(mouve: mouve)
                                 .transition(.move(edge: .leading)) //for animating tabe selector
                         }
                     case .following:
-                        ForEach(0 ... 1, id: \.self) { mouve in
-                            MouveFeedCellView(mouve: Mouve.MOCK_MOUVE)
+                        ForEach(viewModel.followingMouves) { mouve in
+                            MouveFeedCellView(mouve: mouve)
                                 .transition(.move(edge: .trailing))
                         }
                     }
                     
                 })
-                .padding(.horizontal)
             }
+            .padding(.horizontal)
             .refreshable {
-                Task{ try await viewModel.fetchMouves() }
+                Task{
+                    try await viewModel.fetchMouves()
+                    try await viewModel.fetchFollowingMouves()
+                }
             }
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
@@ -84,6 +86,9 @@ struct MouveFeedView: View {
             .navigationDestination(isPresented: $showNotificationsView, destination: {
                 NotificationsView()
             })
+//            .navigationDestination(for: User.self) { user in
+//                ProfileView(user: user)
+//            }
         }
     }
 }
