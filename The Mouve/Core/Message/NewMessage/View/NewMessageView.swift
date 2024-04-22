@@ -22,7 +22,7 @@ struct NewMessageView: View {
                     .padding(.leading)
                     .background(Color(.systemGroupedBackground))
                 
-                Text("CONTACTS")
+                Text("friends")
                     .foregroundColor(.gray)
                     .font(.footnote)
                     .frame(maxWidth: .infinity, alignment: .leading)

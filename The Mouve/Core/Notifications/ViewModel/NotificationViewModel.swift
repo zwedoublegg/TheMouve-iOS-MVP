@@ -35,6 +35,10 @@ class NotificationViewModel: ObservableObject {
             var notification = notifications[i]
             
             notification.user = try await UserService.fetchUser(withUid: notification.notificationSenderUid)
+//            if let user = notification.user {
+//                user.isFollowed = try await UserService.checkIfUserIsFollowed(uid: self.currentUser?.uid ?? "")
+//            }
+//            notification.user?.isFollowed = try await UserService.checkIfUserIsFollowed(uid: self.currentUser?.uid ?? "")
             
             if let mouveId = notification.mouveId {
                 notification.mouve = try await MouveService.fetchMouve(withMouveId: mouveId)
@@ -44,4 +48,31 @@ class NotificationViewModel: ObservableObject {
             notifications[i] = notification
         }
     }
+}
+
+extension NotificationViewModel {
+//    func follow(userFromNotification user: User) {
+//        Task {
+//            try await UserService.follow(uid: user.id)
+//            user.isFollowed = true
+//            
+//            NotificationManager.shared.uploadFollowNotification(toUid: user.id)
+//        }
+//    }
+//    
+//    func unfollow(userFromNotification user: User) {
+//        Task {
+//            try await UserService.unfollow(uid: user.id)
+//            user.isFollowed = false
+//            
+//            try await NotificationManager.shared.deleteFollowNotification(notificationOwnerUid: user.id)
+//        }
+//    }
+//    
+//    func checkIfUserIsFollowed(userFromNotification user: User) {
+//        guard user.isFollowed == nil else {return}
+//        Task {
+//            user.isFollowed = try await UserService.checkIfUserIsFollowed(uid: user.id)
+//        }
+//    }
 }

@@ -23,23 +23,30 @@ struct NotificationCell: View {
             
             //Notification message
             HStack {
-                Text(notification.user?.username ?? "")
-                    .font(.subheadline)
-                    .fontWeight(.semibold) +
-                
-//                if let _ = notification.user?.isVerified {
-//                    Text("")
-//                }
-                
-                Text(Image(systemName: "checkmark.seal.fill"))
-                    .font(.system(size: 12))
-                    .foregroundColor(.black) +
-                
-                Text(" \(notification.type.notificationMessage)")
-                    .font(.subheadline) +
-                Text(" \(notification.timestamp.timestampString())")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+                if let _ = notification.user?.isVerified {
+                    (Text(notification.user?.username ?? "")
+                         +
+                    Text(" "))
+                        .font(.subheadline)
+                        .fontWeight(.semibold) +
+                    Text(Image(systemName: "checkmark.seal.fill"))
+                        .font(.system(size: 12))
+                        .foregroundColor(.black) +
+                    Text(" \(notification.type.notificationMessage)")
+                        .font(.subheadline) +
+                    Text(" \(notification.timestamp.timestampString())")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                } else {
+                    Text(notification.user?.username ?? "")
+                        .font(.subheadline)
+                        .fontWeight(.semibold) +
+                    Text(" \(notification.type.notificationMessage)")
+                        .font(.subheadline) +
+                    Text(" \(notification.timestamp.timestampString())")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
             }
             
             Spacer()
@@ -48,13 +55,23 @@ struct NotificationCell: View {
                 Button {
                     print("Follow handled here")
                 } label: {
-                    Text("Follow")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .frame(width: 100, height: 32)
-                        .foregroundColor(.white)
-                        .background(.black)
-                        .cornerRadius(5)
+                    if let _ = notification.user?.isFollowed {
+                        Text("Following")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .frame(width: 100, height: 32)
+                            .foregroundColor(.white)
+                            .background(.black)
+                            .cornerRadius(5)
+                    } else {
+                        Text("Follow")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .frame(width: 100, height: 32)
+                            .foregroundColor(.white)
+                            .background(.black)
+                            .cornerRadius(5)
+                    }
                 }
             } else {
                 Image("Linkedin_prof")

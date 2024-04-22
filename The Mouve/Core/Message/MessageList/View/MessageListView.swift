@@ -59,6 +59,9 @@ struct MessageListView: View {
                     ProfileView(user: user)
                 case .chatView(let user):
                     ChatView(user: user)
+                case .notifications:
+                    Text("")
+//                    NotificationsView()
                 }
             })
             .navigationDestination(isPresented: $showChatView, destination: {

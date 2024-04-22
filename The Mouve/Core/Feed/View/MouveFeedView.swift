@@ -75,20 +75,22 @@ struct MouveFeedView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem (placement: .navigationBarTrailing) {
-                    Button{
-                        showNotificationsView.toggle()
-                    } label: {
+                    NavigationLink(value: Route.notifications) {
                         Image(systemName: "bell")
                             .foregroundColor(.black)
                     }
                 }
             }
-            .navigationDestination(isPresented: $showNotificationsView, destination: {
-                NotificationsView()
+            .navigationDestination(for: Route.self, destination: { route in
+                switch route {
+                case .profile(_):
+                    Text("")
+                case .chatView(_):
+                    Text("")
+                case .notifications:
+                    NotificationsView()
+                }
             })
-//            .navigationDestination(for: User.self) { user in
-//                ProfileView(user: user)
-//            }
         }
     }
 }

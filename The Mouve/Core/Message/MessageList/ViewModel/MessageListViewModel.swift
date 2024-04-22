@@ -38,7 +38,6 @@ class MessageListViewModel: ObservableObject{
     
     private func loadMessageUser(fromMessages fetchedMessages: [Message]){
         var messages = fetchedMessages
-        print(messages)
         for i in 0..<messages.count {
             let message = messages[i]
             
